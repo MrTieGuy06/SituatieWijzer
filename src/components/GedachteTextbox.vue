@@ -1,0 +1,13 @@
+<template>
+    <v-container>
+        <v-row>
+            <v-textarea
+            outlined
+            name="input-7-4"
+            label="Gedachte"
+            no-resize
+            class="pt-5"
+            ></v-textarea>
+        </v-row>
+    </v-container>
+</template>
