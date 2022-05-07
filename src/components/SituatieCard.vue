@@ -12,7 +12,7 @@
     </v-card-text>
 
     <v-card-text>
-        {{ situatie.datum }}
+        {{ situatie.updatedAt }}
     </v-card-text>
 
     <v-card-actions>
@@ -38,7 +38,7 @@
               >
                 mdi-notebook-outline
               </v-icon>
-              <span class="subheading mr-2">{{situatie.aantalGedachten + situatie.aantalEmoties + situatie.aantalActies}}</span>
+              <span class="subheading mr-2">{{situatie.kaarten.length}}</span>
             </template>
             <span>
 

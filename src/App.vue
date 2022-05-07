@@ -28,11 +28,11 @@
     <v-app-bar
       app
       absolute
-      color="primary"
+      color="#fcb69f"
       dark
       shrink-on-scroll
       src="../public/clouds.jpg"
-      scroll-target="#scrolling-techniques-2"
+      scroll-target="#main-content"
     >
       <template v-slot:img="{ props }">
         <v-img
@@ -60,7 +60,7 @@
       </v-btn>
     </v-app-bar>
 
-    <v-main>
+    <v-main id="main-content">
       <router-view></router-view>
     </v-main>
   </v-app>

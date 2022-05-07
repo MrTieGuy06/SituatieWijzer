@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import SituatieView from '../views/SituatieView.vue'
 import NieuweSituatieView from '../views/NieuweSituatieView.vue'
 import MijnSituatiesView from '../views/MijnSituatiesView.vue'
+import VoortgangView from '../views/VoortgangView.vue'
 
 Vue.use(VueRouter)
 
@@ -31,7 +32,7 @@ const routes = [
   {
     path: '/mijn-voortgang',
     name: 'mijn-voortgang',
-    component: HomeView
+    component: VoortgangView
   }
 ]
 
