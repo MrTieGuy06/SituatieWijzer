@@ -10,15 +10,8 @@ new Vue({
   router,
   store,
   vuetify,
-  mounted(){
-    if(localStorage.mijnSituaties){
-      this.mijnSituaties = localStorage.mijnSituaties;
-    }
-  },
-  watch:{
-    mijnSituaties(UpdatedSituaties){
-      localStorage.mijnSituaties = UpdatedSituaties;
-    }
+  data:{
+    situaties: [],
   },
   render: h => h(App)
 }).$mount('#app')

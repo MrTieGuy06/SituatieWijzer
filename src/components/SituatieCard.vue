@@ -4,15 +4,12 @@
     max-width="400"
   >
     <v-card-title>
-      <span class="text-h6 font-weight-light">Situatie</span>
+      <span class="text-h5 font-weight-bold">{{ situatie.title }}</span>
     </v-card-title>
 
-    <v-card-text class="text-h5 font-weight-bold">
-      {{ situatie.title }}
-    </v-card-text>
 
     <v-card-text>
-        {{ situatie.updatedAt }}
+      {{ situatie.updatedAt }}
     </v-card-text>
 
     <v-card-actions>

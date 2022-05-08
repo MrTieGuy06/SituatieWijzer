@@ -47,13 +47,13 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon>
+      <!--<v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
 
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
-      </v-btn>
+      </v-btn>-->
 
       <v-btn icon to="/nieuwe-situatie">
         <v-icon>mdi-plus</v-icon>
@@ -74,7 +74,7 @@
         { title: 'Home', icon: 'mdi-home', to: '/' },
         { title: 'Nieuwe Situatie', icon: 'mdi-plus', to: '/nieuwe-situatie' },
         { title: 'Mijn Situaties', icon: 'mdi-view-dashboard', to: '/mijn-situaties' },
-        { title: 'Mijn Voortgang', icon: 'mdi-calendar', to: '/mijn-voortgang'},
+        //{ title: 'Mijn Voortgang', icon: 'mdi-calendar', to: '/mijn-voortgang'},
       ]
     }),
   }

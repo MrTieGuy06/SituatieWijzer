@@ -1,14 +1,12 @@
 <template>
-    <v-container>
-        
-        
-        <h1>{{title}}</h1>
+    <v-container v-if="situaties[$route.params.id]">
+        <h1>{{situaties[$route.params.id].title}}</h1>
         
         <v-card
             elevation="3"
             outlined
             class="mt-3"
-            v-for="kaart in kaarten"
+            v-for="kaart in situaties[$route.params.id].kaarten"
             :key="kaart.id"
             >
             <v-card-title>
@@ -43,22 +41,13 @@
 export default {
     data: function() { 
         return{
-            id: 1,
-            title: 'Situatie 4',
-            aantalGedachten: 3,
-            aantalEmoties: 3,
-            aantalActies: 4,
-            datum: '05-05-2022',
-            positief: 3,
-            negatief: 4,
-            kaarten: [
-                { id: 1, soort: "Gedachte", waarde: "Waarde van de gedachte", stemming: "positief"},
-                { id: 2, soort: "Emotie", waarde: "Waarde van de emotie", stemming: "neutraal"},
-                { id: 3, soort: "Actie", waarde: "Waarde van de actie",  stemming: "negatief"},
-                { id: 4, soort: "Gedachte", waarde: "Nulla enim sit commodo elit exercitation consectetur. Irure est pariatur irure nisi dolor cillum.",  stemming: "positief"},
-                { id: 5, soort: "Emotie", waarde: "Excepteur dolor elit qui non. Exercitation ad minim anim dolor minim dolore culpa ut magna aliqua elit incididunt deserunt nostrud. Sit laborum nulla elit aute nostrud ex ea. Non elit enim mollit labore id ullamco magna amet consectetur laborum laboris. Non pariatur eu sunt laborum consectetur excepteur laborum laborum laborum ea occaecat cupidatat.", stemming:"neutraal"}
-            ]
+            situaties: []
         }
+    },
+    mounted(){
+      if(localStorage.situaties){
+        this.situaties = JSON.parse(localStorage.situaties);
+      }
     }
 }
 </script>
