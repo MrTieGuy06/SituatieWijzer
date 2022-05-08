@@ -1,12 +1,17 @@
 <template>
+
   <v-container>
     
     <h1>Dashboard</h1>
 
-    <v-subheader>Laatste situatie</v-subheader>
+    <v-subheader>
+      Laatste situatie
+    </v-subheader>
+
     <situatie-card :situatie="situaties[situaties.length-1]" />
 
   </v-container>
+  
 </template>
 
 <script>
