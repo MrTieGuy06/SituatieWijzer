@@ -123,17 +123,19 @@
             },
             opslaan(){
 
+                let newId = 0;
+                this.situaties.forEach(situatie => {
+                    if (situatie.id > newId) {
+                        newId = situatie.id;
+                    }
+                });
+
                 let situatieToSave = {
-                    id: this.situaties.length,
+                    id: newId + 1,
                     title: this.situatieTitel,
-                    aantalGedachten: this.kaarten.filter (({soort}) => soort === 'Gedachte').length,
-                    aantalEmoties: this.kaarten.filter (({soort}) => soort === 'Emotie').length,
-                    aantalActies: this.kaarten.filter (({soort}) => soort === 'Actie').length,
+                    kaarten: this.kaarten,
                     createdAt: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
-                    updatedAt: require('moment')().format('YYYY-MM-DD HH:mm:ss'),
-                    positief: this.kaarten.filter (({stemming}) => stemming === 'positief').length,
-                    negatief: this.kaarten.filter (({stemming}) => stemming === 'negatief').length,
-                    kaarten: this.kaarten
+                    updatedAt: require('moment')().format('YYYY-MM-DD HH:mm:ss')
                 }
 
                 this.situaties.push(situatieToSave);

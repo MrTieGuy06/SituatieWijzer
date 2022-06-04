@@ -1,11 +1,11 @@
 <template>
-    <v-container v-if="situaties[$route.params.id]">
+    <v-container v-if="situatie">
 
         <h1>
-            {{ situaties[$route.params.id].title }}
+            {{ situatie.title }}
         </h1>
         
-        <v-card elevation="3" outlined class="mt-3" v-for="kaart in situaties[$route.params.id].kaarten" :key="kaart.id">
+        <v-card elevation="3" outlined class="mt-3" v-for="kaart in situatie.kaarten" :key="kaart.id">
             
             <v-card-title>
                 {{ kaart.soort }}
@@ -47,14 +47,25 @@
 
 <script>
     export default {
+        name: 'SituatieView',
+        props: {
+            situatieId: {type: String, required: true }
+        },
         data: function() { 
             return{
-                situaties: []
+                situaties: [],
             }
         },
         mounted(){
             if(localStorage.situaties){
-                this.situaties = JSON.parse(localStorage.situaties);
+                this.situaties = JSON.parse(localStorage.situaties)
+            }
+        },
+        computed:{
+            situatie(){
+                return this.situaties.find(
+                    (situatie) => situatie.id == parseInt(this.situatieId)
+                )
             }
         }
     }

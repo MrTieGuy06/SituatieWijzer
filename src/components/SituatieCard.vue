@@ -1,12 +1,34 @@
 <template>
 
-  <v-card class="mx-auto" max-width="400">
+  <v-card class="mx-auto" max-width="400" v-if="situatie">
 
     <v-card-title>
 
       <span class="text-h5 font-weight-bold">
         {{ situatie.title }}
       </span>
+
+
+      <v-menu offset-y>
+        <template v-slot:activator="{ on, attrs }">
+          <v-col class="pa-0">
+            <v-icon class="float-right"
+              v-bind="attrs"
+              v-on="on">
+              mdi-dots-vertical
+            </v-icon>
+          </v-col>
+        </template>
+
+        <v-list>
+          <v-list-item
+            v-for="(opt, index) in cardOptions"
+            :key="index"
+            @click="opt.func">
+            <v-list-item-title :class="opt.customClasses">{{ opt.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
 
     </v-card-title>
 
@@ -18,7 +40,7 @@
 
       <v-list-item class="grow">
 
-        <v-btn text color="blue accent-4 ps-0" v-bind:to="/situatie/ + situatie.id">
+        <v-btn text color="blue accent-4 ps-0" v-bind:to="'/situatie/' + situatie.id">
             Bekijk Nu
         </v-btn>
 
@@ -45,7 +67,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{ situatie.aantalGedachten }}
+                {{ situatie.kaarten.filter (({soort}) => soort === 'Gedachte').length }}
               </span>
               
               <span class="mr-1">
@@ -57,7 +79,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{situatie.aantalEmoties}}
+                {{situatie.kaarten.filter (({soort}) => soort === 'Emotie').length}}
               </span>
 
               <span class="mr-1">
@@ -69,7 +91,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{ situatie.aantalActies }}
+                {{ situatie.kaarten.filter (({soort}) => soort === 'Actie').length }}
               </span>
 
             </span>
@@ -83,7 +105,7 @@
           </v-icon>
 
           <span class="subheading mr-2 green--text">
-            {{ situatie.positief }}
+            {{ situatie.kaarten.filter (({stemming}) => stemming === 'positief').length }}
           </span>
           
           <span class="mr-1">
@@ -95,7 +117,7 @@
           </v-icon>
 
           <span class="subheading red--text">
-            {{ situatie.negatief }}
+            {{ situatie.kaarten.filter (({stemming}) => stemming === 'negatief').length }}
           </span>
         
         </v-row>
@@ -111,7 +133,19 @@
 <script>
 
   export default {
-    props: ['situatie']
+    data: () => ({ 
+      cardOptions: [
+        { title: 'Delete',
+          customClasses: 'red--text',
+          func: function(){
+            if(confirm('Weet je zeker dat je deze situatie wilt verwijderen?')){
+              alert("ssseeeee");
+            }
+          }
+        },
+      ]
+    }),
+    props: ['situatie'] 
   }
 
 </script>

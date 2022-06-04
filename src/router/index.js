@@ -15,9 +15,10 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/situatie/:id',
+    path: '/situatie/:situatieId',
     name: 'situatie',
-    component: SituatieView
+    component: SituatieView,
+    props: true
   },
   {
     path: '/nieuwe-situatie',
