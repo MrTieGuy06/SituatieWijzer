@@ -40,6 +40,36 @@
 
         </v-list-item>
 
+        <v-list-group
+        v-for="item in menuGroups" :key="item.title"
+        :prepend-icon="item.icon"
+        >
+          <template v-slot:activator>
+            <v-list-item-title>{{item.title}}</v-list-item-title>
+          </template>
+
+          <v-list-item v-for="subItem in item.items" :key="subItem.title" :to="subItem.to" link>
+
+          <v-list-item-icon>
+
+            <v-icon>
+              {{ subItem.icon }}
+            </v-icon>
+
+          </v-list-item-icon>
+
+          <v-list-item-content>
+
+            <v-list-item-title>
+              {{ subItem.title }}
+            </v-list-item-title>
+
+          </v-list-item-content>
+
+        </v-list-item>
+
+        </v-list-group>
+
       </v-list>
 
     </v-navigation-drawer>
@@ -96,7 +126,17 @@
         { title: 'Home', icon: 'mdi-home', to: '/' },
         { title: 'Nieuwe Situatie', icon: 'mdi-plus', to: '/nieuwe-situatie' },
         { title: 'Mijn Situaties', icon: 'mdi-view-dashboard', to: '/mijn-situaties' },
-        //{ title: 'Mijn Voortgang', icon: 'mdi-calendar', to: '/mijn-voortgang'},
+        //{ title: 'Mijn Voortgang', icon: 'mdi-chart-timeline-variant', to: '/mijn-voortgang'},
+      ],
+      menuGroups:[
+        { 
+          title: 'Settings',
+          icon: 'mdi-cog',
+          items: [
+            //{ title: 'Mijn gegevens', icon: 'mdi-account', to: '/' },
+            { title: 'Situatie-opties', icon: 'mdi-format-align-left', to: 'situatie-opties' }
+          ]
+        }
       ]
     }),
   }

@@ -5,6 +5,7 @@ import SituatieView from '../views/SituatieView.vue'
 import NieuweSituatieView from '../views/NieuweSituatieView.vue'
 import MijnSituatiesView from '../views/MijnSituatiesView.vue'
 import VoortgangView from '../views/VoortgangView.vue'
+import SituatieOptiesView from '../views/opties/SituatieOptiesView.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/mijn-voortgang',
     name: 'mijn-voortgang',
     component: VoortgangView
+  },
+  {
+    path: '/situatie-opties',
+    name: 'situatie-opties',
+    component: SituatieOptiesView
   }
 ]
 

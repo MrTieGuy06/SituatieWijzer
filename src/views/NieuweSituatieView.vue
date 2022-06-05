@@ -6,7 +6,7 @@
             Nieuwe Situatie
         </h1>
 
-        <v-text-field label="Situatie titel" autofocus required v-model="situatieTitel" :rules="[() => !!situatieTitel || 'Dit veld is verplicht']" />
+        <v-text-field label="Situatie titel" required v-model="situatieTitel" :rules="[() => !!situatieTitel || 'Dit veld is verplicht']" />
         
         <span v-show="!hideButtons" class="grey--text text--darken-1">
             Toevoegen:
@@ -44,7 +44,7 @@
             
             <v-row>
 
-                <v-textarea outlined name="input-7-4" :label="k.soort" v-model="k.waarde" auto-grow no-resize autofocus :rules="[() => !!k.waarde || '']">
+                <v-textarea outlined name="input-7-4" :label="k.soort" v-model="k.waarde" auto-grow no-resize :rules="[() => !!k.waarde || '']">
 
                     <v-icon slot="append" @click="k.stemming='negatief'" v-if="k.stemming==='positief'" color="green">
                         mdi-emoticon-happy-outline
