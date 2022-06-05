@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SituatieView from '../views/SituatieView.vue'
 import NieuweSituatieView from '../views/NieuweSituatieView.vue'
-import NieuweTaartView from '../views/NieuweTaartView.vue'
 import MijnSituatiesView from '../views/MijnSituatiesView.vue'
 import VoortgangView from '../views/VoortgangView.vue'
 
@@ -24,11 +23,6 @@ const routes = [
     path: '/nieuwe-situatie',
     name: 'nieuwe-situatie',
     component: NieuweSituatieView
-  },
-  {
-    path: '/nieuwe-taart',
-    name: 'nieuwe-taart',
-    component: NieuweTaartView
   },
   {
     path: '/mijn-situaties',
