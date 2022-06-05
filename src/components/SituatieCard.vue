@@ -21,11 +21,8 @@
         </template>
 
         <v-list>
-          <v-list-item
-            v-for="(opt, index) in cardOptions"
-            :key="index"
-            @click="opt.func">
-            <v-list-item-title :class="opt.customClasses">{{ opt.title }}</v-list-item-title>
+          <v-list-item @click="deleteSituatie(situatie.id)">
+            <v-list-item-title class="red--text">Delete</v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
@@ -134,18 +131,32 @@
 
   export default {
     data: () => ({ 
-      cardOptions: [
-        { title: 'Delete',
-          customClasses: 'red--text',
-          func: function(){
-            if(confirm('Weet je zeker dat je deze situatie wilt verwijderen?')){
-              alert("ssseeeee");
-            }
-          }
-        },
-      ]
+      situaties: [],
     }),
-    props: ['situatie'] 
+    props: ['situatie'],
+    methods:{
+      deleteSituatie: function(id){
+        if(confirm('Weet je zeker dat je deze situatie wilt verwijderen?')){
+          this.situaties = this.situaties.filter(function(item) {
+              return item.id != id;
+          });
+          location.reload();
+        }
+      }
+    },
+    mounted(){
+      if(localStorage.situaties){
+        this.situaties = JSON.parse(localStorage.situaties);
+      }
+    },
+    watch:{
+      situaties:{
+        handler(updatedSituaties){
+          localStorage.situaties = JSON.stringify(updatedSituaties);
+        },
+        deep: true
+      }
+    }
   }
 
 </script>
