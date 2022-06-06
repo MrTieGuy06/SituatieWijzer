@@ -12,6 +12,7 @@ new Vue({
   vuetify,
   data:{
     situaties: [],
+    kaartSoorten: []
   },
   render: h => h(App)
 }).$mount('#app')

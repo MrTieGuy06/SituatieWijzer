@@ -139,5 +139,17 @@
         }
       ]
     }),
+  mounted(){
+    if(!localStorage.kaartSoorten){
+      localStorage.kaartSoorten = JSON.stringify([
+        { label: 'Situatie', labelMeervoud: 'Situaties', enabled: true, required: true },
+        { label: 'Gedachte', labelMeervoud: 'Gedachten', enabled: true, required: true },
+        { label: 'Emotie', labelMeervoud: 'Emoties', enabled: true, required: true },
+        { label: 'Actie', labelMeervoud: 'Acties', enabled: true, required: true },
+        { label: 'Sentatie', labelMeervoud: 'Sentaties', enabled: false, required: false },
+        { label: 'Gevolg (in mijzelf en buiten)', labelMeervoud: 'Gevolgen', enabled: false, required: false }
+      ])
+    }
+  }
   }
 </script>
