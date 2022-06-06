@@ -64,7 +64,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{ situatie.kaarten.filter (({soort}) => soort === 'Gedachte').length }}
+                {{ aantalGedachten }}
               </span>
               
               <span class="mr-1">
@@ -76,7 +76,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{situatie.kaarten.filter (({soort}) => soort === 'Emotie').length}}
+                {{ aantalEmoties }}
               </span>
 
               <span class="mr-1">
@@ -88,7 +88,7 @@
               </v-icon>
 
               <span class="subheading mr-2">
-                {{ situatie.kaarten.filter (({soort}) => soort === 'Actie').length }}
+                {{ aantalActies }}
               </span>
 
             </span>
@@ -132,6 +132,9 @@
   export default {
     data: () => ({ 
       situaties: [],
+      aantalGedachten: 0,
+      aantalEmoties: 0,
+      aantalActies: 0
     }),
     props: ['situatie'],
     methods:{
@@ -148,6 +151,10 @@
       if(localStorage.situaties){
         this.situaties = JSON.parse(localStorage.situaties);
       }
+      
+      this.aantalGedachten = this.situatie.kaarten.filter (({soort}) => soort === 'Gedachte').length;
+      this.aantalEmoties = this.situatie.kaarten.filter (({soort}) => soort === 'Emotie').length;
+      this.aantalActies = this.situatie.kaarten.filter (({soort}) => soort === 'Actie').length;
     },
     watch:{
       situaties:{
