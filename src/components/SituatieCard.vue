@@ -102,7 +102,7 @@
           </v-icon>
 
           <span class="subheading mr-2 green--text">
-            {{ situatie.kaarten.filter (({stemming}) => stemming === 'positief').length }}
+            {{ aantalPositief }}
           </span>
           
           <span class="mr-1">
@@ -114,7 +114,7 @@
           </v-icon>
 
           <span class="subheading red--text">
-            {{ situatie.kaarten.filter (({stemming}) => stemming === 'negatief').length }}
+            {{ aantalNegatief }}
           </span>
         
         </v-row>
@@ -134,7 +134,9 @@
       situaties: [],
       aantalGedachten: 0,
       aantalEmoties: 0,
-      aantalActies: 0
+      aantalActies: 0,
+      aantalPositief: 0,
+      aantalNegatief: 0,
     }),
     props: ['situatie'],
     methods:{
@@ -155,6 +157,8 @@
       this.aantalGedachten = this.situatie.kaarten.filter (({soort}) => soort === 'Gedachte').length;
       this.aantalEmoties = this.situatie.kaarten.filter (({soort}) => soort === 'Emotie').length;
       this.aantalActies = this.situatie.kaarten.filter (({soort}) => soort === 'Actie').length;
+      this.aantalPositef = this.situatie.kaarten.filter (({stemming}) => stemming === 'positief').length;
+      this.aantalNegatief = this.situatie.kaarten.filter (({stemming}) => stemming === 'negatief').length;
     },
     watch:{
       situaties:{
